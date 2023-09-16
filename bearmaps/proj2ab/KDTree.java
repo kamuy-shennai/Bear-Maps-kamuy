@@ -4,9 +4,9 @@ import java.util.HashSet;
 import java.util.List;
 
 public class KDTree implements PointSet {
-    private Node firstNode;
-    private class Node {
-        private Point point;
+    private final Node firstNode;
+    private static class Node {
+        private final Point point;
         private Node left;
         private Node right;
         private int dimensional;
@@ -19,7 +19,7 @@ public class KDTree implements PointSet {
     }
 
     /**
-     * 构建k-d tree
+     * 构造函数，构建k-d tree
      * @param points 点集
      */
     public KDTree(List<Point> points) {
@@ -73,7 +73,7 @@ public class KDTree implements PointSet {
         Point goal = new Point(x,y);
         Node best = nearestHelper(goal,firstNode,firstNode);
       return best.point;
-    };
+    }
 
     private Node nearestHelper(Point goal, Node nowBest, Node n)
     {
@@ -82,7 +82,7 @@ public class KDTree implements PointSet {
         //System.out.println(""+Best.point.getX()+","+n.point.getY());
         if(Point.distance(n.point,goal)<Point.distance(Best.point,goal)){
             Best=n;
-        };
+        }
         Node goodSide;
         Node badSide;
         if(n.dimensional==0)
